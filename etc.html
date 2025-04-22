@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Borrow Other Item</title>
+  <link rel="stylesheet" href="etc.css" />
+  <script src="etc.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="form-wrapper">
+    <div class="form-card">
+      <h2>📦 Borrow an Item (ETC)</h2>
+      <form id="etcForm" onsubmit="handleEtcSubmit(event)">
+        <div class="form-group">
+          <label for="itemName">Item Name</label>
+          <input type="text" id="itemName" placeholder="E.g. Projector, HDMI cable" required>
+        </div>
+
+        <div class="form-group">
+          <label for="borrowerName">Borrower Name</label>
+          <input type="text" id="borrowerName" placeholder="Full name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="userId">User ID</label>
+          <input type="number" id="userId" placeholder="E.g. 220619" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="number" id="phoneNumber" placeholder="E.g. 09123456789" required>
+        </div>
+
+        <div class="form-group">
+          <label for="ccaEmail">CCA Email</label>
+          <input type="email" id="ccaEmail" placeholder="e.g. user@cca.edu.ph" required pattern="[a-zA-Z0-9._%+-]+@cca\.edu\.ph$" title="Must end with @cca.edu.ph">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="borrowDate">Borrow Date</label>
+            <input type="date" id="borrowDate" required>
+          </div>
+
+          <div class="form-group">
+            <label for="returnDate">Return Date</label>
+            <input type="date" id="returnDate" required>
+          </div>
+        </div>
+
+        <div class="summary" id="summarySection" style="display: none;">
+          <h3>Summary</h3>
+          <p><strong>Item:</strong> <span id="summaryItemName"></span></p>
+          <p><strong>Name:</strong> <span id="summaryBorrowerName"></span></p>
+          <p><strong>User ID:</strong> <span id="summaryUserId"></span></p>
+          <p><strong>Phone:</strong> <span id="summaryPhoneNumber"></span></p>
+          <p><strong>Email:</strong> <span id="summaryEmail"></span></p>
+          <p><strong>Borrow Date:</strong> <span id="summaryBorrowDate"></span></p>
+          <p><strong>Return Date:</strong> <span id="summaryReturnDate"></span></p>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="etc.js"></script>
+</body>
+</html>

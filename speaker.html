@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Borrow Speaker</title>
+  <link rel="stylesheet" href="speaker.css" />
+  <script src="speaker.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Borrow Speaker</h1>
+
+    <form id="speakerForm">
+      <div class="form-group">
+        <label for="serialNumber">Speaker Serial Number:</label>
+        <input type="text" id="serialNumber" required />
+      </div>
+
+      <div class="form-group">
+        <label for="borrowerName">Borrower's Name:</label>
+        <input type="text" id="borrowerName" required />
+      </div>
+
+      <div class="form-group">
+        <label for="borrowerId">Borrower ID (CCA ID only):</label>
+        <input type="text" id="borrowerId" pattern="^22-\d{4}$" title="CCA ID format: 22-XXXX" required />
+      </div>
+
+      <div class="form-group">
+        <label for="borrowerPhone">Borrower Phone Number:</label>
+        <input type="tel" id="borrowerPhone" pattern="^\d{10}$" title="Phone number should be 10 digits" required />
+      </div>
+
+      <div class="form-group">
+        <label for="borrowerEmail">Borrower's CCA Email:</label>
+        <input type="email" id="borrowerEmail" placeholder="example@cca.edu.ph" required />
+      </div>
+
+      <div class="form-group">
+        <label for="borrowTime">Borrow Time:</label>
+        <input type="time" id="borrowTime" min="07:00" max="21:00" required />
+      </div>
+
+      <div class="form-group">
+        <label for="returnTime">Return Time:</label>
+        <input type="time" id="returnTime" min="07:00" max="21:00" required />
+      </div>
+
+      <div class="form-group">
+        <label for="room">Room / Location:</label>
+        <select id="room" name="room" required>
+          <option value="">-- Select Room or Location --</option>
+          <option value="CLAB1">CLAB1</option>
+          <option value="CLAB2">CLAB2</option>
+          <option value="CLAB3">CLAB3</option>
+          <option value="CLAB4">CLAB4</option>
+          <option value="None">None (No Location)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="location">Outside Location:</label>
+        <select id="location" required>
+          <option value="">-- Select Location --</option>
+          <option value="Court">Court</option>
+          <option value="Quadrangle">Quadrangle</option>
+          <option value="Stair">Stair</option>
+          <option value="None">None (No Location)</option>
+        </select>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <div class="summary" id="summarySection">
+      <h2>Summary of Borrowed Speaker</h2>
+      <div id="summaryDetails"></div>
+    </div>
+  </div>
+</body>
+</html>

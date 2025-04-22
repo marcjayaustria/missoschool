@@ -1,0 +1,132 @@
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Button styles */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #6c5ce7;
+  color: #fff;
+}
+
+button:focus {
+  outline: none;
+}
+
+.group-selection button {
+  background-color: #f1f1f1;
+}
+
+.submit-btn {
+  background-color: #6c5ce7;
+  color: white;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.submit-btn:hover {
+  background-color: #5a4ac7;
+}
+
+/* Search Input */
+#searchInput {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+/* Name List */
+.names-list {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.name-box {
+  background-color: #e0e0e0;
+  padding: 15px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  font-size: 18px;
+  flex: 1 1 120px;
+}
+
+.name-box:hover {
+  background-color: #6c5ce7;
+  color: white;
+  transform: translateY(-5px);
+}
+
+.name-box.selected {
+  background-color: #6c5ce7;
+  color: white;
+}
+
+/* Confirmation Section */
+.confirmation-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.confirmation-container h2 {
+  font-size: 22px;
+  color: #333;
+}
+
+.confirmation-container p {
+  font-size: 18px;
+  color: #555;
+}
+
+.confirmation-container button {
+  background-color: #6c5ce7;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.confirmation-container button:hover {
+  background-color: #5a4ac7;
+}

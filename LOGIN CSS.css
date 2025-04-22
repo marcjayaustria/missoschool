@@ -1,0 +1,160 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('CCA.jpeg') no-repeat center center/cover;
+    background-size: cover; /* Ensure the background covers the whole screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+
+/* Wrapper for Centering */
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Login Box */
+.login-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px; /* Max width for better control */
+    text-align: center;
+}
+
+/* Form Titles */
+.login-form h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.login-form p {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+.input-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    color: #34495e;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.3s ease-in-out;
+}
+
+.input-group input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(52, 152, 219, 0.5);
+}
+
+/* CAPTCHA */
+.captcha-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #eee;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.captcha-box button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #3498db; /* Same as the theme */
+}
+
+/* Login Button */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    font-weight: bold;
+}
+
+.login-btn:hover {
+    background: linear-gradient(135deg, #2980b9, #1e6fa7);
+}
+
+/* Links */
+p {
+    margin-top: 10px;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .login-container {
+        width: 90%;
+        padding: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        padding: 20px;
+    }
+    .login-form h2 {
+        font-size: 20px;
+    }
+}
+
+/* Mobile-Friendly Form Styling */
+@media (max-width: 400px) {
+    .login-container {
+        width: 85%;
+        padding: 20px;
+    }
+    .input-group input {
+        padding: 10px;
+        font-size: 12px;
+    }
+    .login-btn {
+        padding: 10px;
+        font-size: 16px;
+    }
+}

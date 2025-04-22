@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MISSO - Borrowed Items</title>
+    <link rel="stylesheet" href="BARROWED ITEM CSS.css">
+    <script src="BARROWED ITEM.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="sidebar">
+        <img src="assets/user-placeholder.png" alt="User Profile">
+        <button onclick="window.location.href='BORROWED SECTION.html';">Borrow</button>
+        <button onclick="alert('Return logic')">Return</button>
+
+        <div class="separator"></div>
+
+        <div class="category-buttons">
+            <button onclick="filterCategory('projector')">Projector</button>
+            <button onclick="filterCategory('laptop')">Laptop</button>
+            <button onclick="filterCategory('speaker')">Speaker</button>
+            <button onclick="filterCategory('others')">Others</button>
+        </div>
+
+        <div class="separator"></div>
+    </div>
+
+    <div class="main-content">
+        <h2>Inventory Summary</h2>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search borrowed items..." onkeyup="searchItems()">
+        </div>
+
+        <div class="inventory-summary" id="summaryContent">
+            <!-- Filtered summary will appear here -->
+            <p>Select a category to see summary details.</p>
+        </div>
+    </div>
+
+    <script>
+        function filterCategory(category) {
+            const summary = {
+                projector: getProjectorSummary(),
+                laptop: '<h3>Laptop Summary</h3><ul><li>Dell Inspiron - Borrowed by Mike</li><li>HP Elitebook - Borrowed by Sarah</li></ul>',
+                speaker: '<h3>Speaker Summary</h3><ul><li>JBL Boom - Borrowed by Kyle</li><li>Sony SoundBar - Borrowed by Tina</li></ul>',
+                others: '<h3>Other Items</h3><ul><li>Camera - Borrowed by Dean</li><li>Microphone - Borrowed by Jess</li></ul>'
+            };
+            document.getElementById('summaryContent').innerHTML = summary[category] || '<p>No items found.</p>';
+        }
+
+        function getProjectorSummary() {
+            // Retrieve the borrowed items from localStorage
+            const borrowedItems = JSON.parse(localStorage.getItem('borrowedItems')) || [];
+
+            // Filter out the projectors
+            const projectorItems = borrowedItems.filter(item => item.itemName.toLowerCase().includes('projector'));
+
+            // Create a list of projectors for display
+            if (projectorItems.length > 0) {
+                let projectorList = '<h3>Projector Summary</h3><ul>';
+                projectorItems.forEach(item => {
+                    projectorList += `<li>${item.itemName} - Borrowed by ${item.borrowerName}, Time: ${item.borrowTime}, Room: ${item.roomNumber}</li>`;
+                });
+                projectorList += '</ul>';
+                return projectorList;
+            } else {
+                return '<p>No projectors borrowed.</p>';
+            }
+        }
+
+        function searchItems() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const summaryContent = document.getElementById('summaryContent');
+            const items = summaryContent.querySelectorAll('li');
+            items.forEach(item => {
+                item.style.display = item.textContent.toLowerCase().includes(input) ? '' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>

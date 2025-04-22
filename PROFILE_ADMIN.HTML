@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="PROFILE CSS.css">
+</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MISSO - Home</title>
+    <link rel="stylesheet" href="HOME PAGE CSS.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">CCA MISSO Inventory ADMIN</div>
+            <ul class="nav-links">
+                <li><a href="HOME_ADMIN.html">Home</a></li>
+                <li><a href="BORROWED ITEM.html">Borrowed Items</a></li>
+                <li><a href="PROFILE_ADMIN.html">Profile</a></li>
+ 
+            </ul>
+            <div class="menu-toggle">&#9776;</div>
+        </nav>
+    </header>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img id="profile-picture" src="CCA.jpeg" alt="Profile Picture">
+            <h2 id="full-name">John Doe</h2>
+            <p id="user-role">Student</p>
+        </div>
+        
+        <div class="profile-details">
+            <p><strong>Email:</strong> <span id="email">johndoe@cca.edu.ph</span></p>
+            <p><strong>User ID:</strong> <span id="user-id">20251234</span></p>
+            <p><strong>Address:</strong> <span id="address">123 Main St, City</span></p>
+            <p><strong>Phone:</strong> <span id="phone">+63 912 345 6789</span></p>
+            <p id="position-section"><strong>Position:</strong> <span id="position">N/A</span></p>
+        </div>
+
+        <!-- Teacher Schedule (Visible Only for Teachers) -->
+        <div id="teacher-schedule" class="hidden">
+            <h3>Schedule</h3>
+            <ul id="schedule-list">
+                <li>Monday - 10:00 AM - 12:00 PM</li>
+                <li>Wednesday - 2:00 PM - 4:00 PM</li>
+            </ul>
+        </div>
+
+        <button id="edit-profile">Edit Profile</button>
+    </div>
+
+    <script>
+        // Example JavaScript for dynamic content
+        window.onload = function() {
+            const userRole = document.getElementById("user-role").innerText;
+            if (userRole.toLowerCase() === "teacher") {
+                document.getElementById("teacher-schedule").classList.remove("hidden");
+            }
+        };
+    </script>
+</body>
+</html>

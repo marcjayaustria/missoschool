@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select Borrower</title>
+  <link rel="stylesheet" href="borrowers.css" />
+  <script src="barrowers.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <header>
+        <h1>Select Borrower</h1>
+        <p>Choose a borrower from the list below to proceed.</p>
+      </header>
+      
+      <div class="borrower-layout">
+        
+        <!-- Sidebar -->
+        <nav class="sidebar">
+          <button onclick="showNames('ICSLIS')" class="sidebar-btn">ICSLIS</button>
+          <button onclick="showNames('IEAS')" class="sidebar-btn">IEAS</button>
+          <button onclick="showNames('IBM')" class="sidebar-btn">IBM</button>
+          <button onclick="showNames('STAFF')" class="sidebar-btn">STAFF</button>
+        </nav>
+
+        <div class="divider"></div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+          <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search borrower..." oninput="filterNames()" />
+          </div>
+          <div id="namesList" class="name-grid"></div>
+          <button class="submit-btn" onclick="submitBorrower()">Submit</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const namesData = {
+      ICSLIS: ["Anna Cruz", "Bryan Lopez", "Celine Diaz", "David Tan"],
+      IEAS: ["Ella Gomez", "Francis Yu", "George Lim"],
+      IBM: ["Hazel Ong", "Ian Rivera", "Julia Santos"],
+      STAFF: ["Karen Lee", "Leo Martinez", "Mira Ramos"]
+    };
+
+    let selectedBorrower = null;
+    let currentGroup = [];
+
+    function showNames(dept) {
+      currentGroup = namesData[dept];
+      renderNameButtons(currentGroup);
+    }
+
+    function renderNameButtons(nameArray) {
+      const namesList = document.getElementById("namesList");
+      namesList.innerHTML = "";
+      nameArray.forEach(name => {
+        const btn = document.createElement("button");
+        btn.className = "name-box";
+        btn.innerText = name;
+        btn.onclick = () => {
+          document.querySelectorAll(".name-box").forEach(b => b.classList.remove("selected"));
+          btn.classList.add("selected");
+          selectedBorrower = name;
+        };
+        namesList.appendChild(btn);
+      });
+    }
+
+    function filterNames() {
+      const query = document.getElementById("searchInput").value.toLowerCase();
+      const filtered = currentGroup.filter(name => name.toLowerCase().includes(query));
+      renderNameButtons(filtered);
+    }
+
+    function submitBorrower() {
+      if (!selectedBorrower) {
+        alert("Please select a borrower name.");
+        return;
+      }
+
+      // Example of projector data (replace these with actual dynamic data if necessary)
+      const projectorInfo = {
+        projectorId: 3,   // This is just an example
+        timeIn: "9:00 AM", 
+        timeOut: "11:00 AM",
+        clab: 2           // Example: Classroom number 2
+      };
+
+      // Show confirmation with selected borrower and projector info
+      const confirmationMessage = `
+        Borrower: ${selectedBorrower}<br>
+        Projector ID: ${projectorInfo.projectorId}<br>
+        Time In: ${projectorInfo.timeIn}<br>
+        Time Out: ${projectorInfo.timeOut}<br>
+        CLAB: ${projectorInfo.clab}
+      `;
+
+      // Display the confirmation message
+      const confirmationContainer = document.createElement('div');
+      confirmationContainer.innerHTML = confirmationMessage;
+      confirmationContainer.style.padding = "20px";
+      confirmationContainer.style.backgroundColor = "#ecf0f1";
+      confirmationContainer.style.borderRadius = "10px";
+      confirmationContainer.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+      confirmationContainer.style.marginTop = "20px";
+      document.body.appendChild(confirmationContainer); // Append the confirmation message to the body
+
+      // Optionally, you can save this data to localStorage or send it to a server here if needed.
+      const reservationData = {
+        borrower: selectedBorrower,
+        projectorInfo: projectorInfo
+      };
+
+      // Store the data in localStorage if you need to persist it
+      localStorage.setItem("reservationData", JSON.stringify(reservationData));
+
+      // Optionally, redirect to the next page
+      // window.location.href = "BORROWED ITEM.html";
+    }
+  </script>
+</body>
+</html>

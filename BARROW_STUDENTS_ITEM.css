@@ -1,0 +1,113 @@
+/* General Body Style */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #e3f2fd, #f5f5f5);
+    margin: 0;
+    padding: 0;
+}
+
+/* Section Title */
+h2 {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 28px;
+    color: #2c3e50;
+}
+
+/* Container */
+.borrow-container {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Borrowed Card */
+.borrow-card {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    margin-bottom: 35px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.borrow-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Student Image */
+.student-image {
+    flex: 1;
+    background-color: #f0f4f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+.student-image img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #007BFF;
+    transition: transform 0.3s ease;
+}
+
+.borrow-card:hover .student-image img {
+    transform: scale(1.05);
+}
+
+/* Student Info */
+.student-info {
+    flex: 2;
+    padding: 25px 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.student-info h3 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #007BFF;
+}
+
+.student-info p {
+    margin: 5px 0;
+    font-size: 15.5px;
+    color: #2d2d2d;
+}
+
+.student-info p strong {
+    color: #333;
+}
+
+.student-info hr {
+    margin: 15px 0;
+    border: none;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .borrow-card {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .student-image,
+    .student-info {
+        width: 100%;
+        text-align: center;
+    }
+
+    .student-info {
+        padding: 20px;
+    }
+}

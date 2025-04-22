@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projector Reservation</title>
+  <link rel="stylesheet" href="projector.css" />
+  <script src="projector.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Projector Reservation</h1>
+
+    <!-- Projector Selection -->
+    <section id="projector-section" class="box-section">
+      <h2>Choose One Projector</h2>
+      <div class="grid">
+        <!-- Generate 1-50 Projectors -->
+        <script>
+          for (let i = 1; i <= 50; i++) {
+            document.write(`<button class="item projector" onclick="selectProjector(this)">${i}</button>`);
+          }
+        </script>
+      </div>
+    </section>
+
+    <!-- Time Start -->
+    <section id="time-start-section" class="box-section">
+      <h2>Select Start Time</h2>
+      <div class="grid time-grid">
+        <script>
+          const startTimes = ["7AM", "8AM", "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM", "8PM", "9PM"];
+          startTimes.forEach(time => {
+            document.write(`<button class="item time" onclick="selectTimeStart(this)">${time}</button>`);
+          });
+        </script>
+      </div>
+    </section>
+
+    <!-- Time End -->
+    <section id="time-end-section" class="box-section">
+      <h2>Select End Time</h2>
+      <div class="grid time-grid">
+        <script>
+          startTimes.forEach(time => {
+            document.write(`<button class="item time" onclick="selectTimeEnd(this)">${time}</button>`);
+          });
+        </script>
+      </div>
+    </section>
+
+    <!-- Room Selection -->
+    <section id="room-section" class="box-section">
+      <h2>Select Room</h2>
+      <div class="grid room-grid">
+        <script>
+          const rooms = [
+            "CLAB1", "CLAB2", "CLAB3", "CLAB4", "CLAB5", "CLAB6", "HLAB1", "SPEECH",
+            "L301", "L302", "L303", "L304", "L305", "L306", "L307", "L308", "L309", "L310",
+            "L401", "L402", "L403", "L404", "L405", "L406", "L407", "L408", "L409", "L410",
+            "H.KIT", "SCI LAB", "C.KIT", "APAG", "R201", "C.CENTER", "ACCTG", "CLAB7", "R205", "TRC",
+            "PSYCH", "CLAB8", "HLAB2", "MOCK", "R301", "R302", "R303", "R304", "R305", "R306", "R307",
+            "R308", "R309", "R310", "R311", "R401", "R402", "R403", "R404", "R405", "R406", "R407",
+            "R408", "R409", "R410", "R411", "P101", "P102", "P103", "P104", "P105", "P201", "P202",
+            "P203", "P204", "P205", "P301", "P302", "P303", "P304", "P305", "P401", "P402", "P403",
+            "P404", "P405"
+          ];
+          rooms.forEach(room => {
+            document.write(`<button class="item room" onclick="selectRoom(this)">${room}</button>`);
+          });
+        </script>
+      </div>
+    </section>
+
+    <button id="submitBtn" class="submit-button" onclick="submitReservation()">Submit Reservation</button>
+  </div>
+
+  <script>
+    let selectedProjector = null;
+    let selectedStart = null;
+    let selectedEnd = null;
+    let selectedRoom = null;
+
+    function selectProjector(btn) {
+      if (selectedProjector) return;
+      selectedProjector = btn.innerText;
+      btn.classList.add("off");
+      btn.disabled = true;
+    }
+
+    function selectTimeStart(btn) {
+      if (selectedStart) return;
+      selectedStart = btn.innerText;
+      btn.classList.add("off");
+      btn.disabled = true;
+    }
+
+    function selectTimeEnd(btn) {
+      if (selectedEnd) return;
+      selectedEnd = btn.innerText;
+      btn.classList.add("off");
+      btn.disabled = true;
+    }
+
+    function selectRoom(btn) {
+      if (selectedRoom) return;
+      selectedRoom = btn.innerText;
+      btn.classList.add("off");
+      btn.disabled = true;
+    }
+
+    function submitReservation() {
+      if (!selectedProjector || !selectedStart || !selectedEnd || !selectedRoom) {
+        alert('Please make sure all selections are made.');
+        return;
+      }
+
+      // Confirm Reservation Summary
+      const confirmation = confirm(`Confirm Reservation Details:
+        Projector: ${selectedProjector}
+        Start Time: ${selectedStart}
+        End Time: ${selectedEnd}
+        Room: ${selectedRoom}
+      `);
+
+      if (confirmation) {
+        // Save reservation data to localStorage
+        const reservationData = {
+          projector: selectedProjector,
+          time: `${selectedStart} to ${selectedEnd}`,
+          room: selectedRoom
+        };
+        localStorage.setItem("reservationData", JSON.stringify(reservationData));
+
+        // Redirect to borrower selection page (barrowers.html)
+        window.location.href = "barrowers.html";
+      }
+    }
+  </script>
+</body>
+</html>
