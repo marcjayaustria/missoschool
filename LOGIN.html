@@ -18,10 +18,8 @@
         <nav>
             <div class="logo">CCA MISSO Inventory</div>
             <ul class="nav-links">
-                <li><a href="HOME PAGE.html">Home</a></li>
-                <li><a href="BORROWED ITEM.html">Borrowed Items</a></li>
-                <li><a href="PROFILE.html">Profile</a></li>
-                <li><a href="LOGIN.html" class="login-btn">Login</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="LOGIN.html">Login</a></li>
             </ul>
             <div class="menu-toggle">&#9776;</div>
         </nav>
@@ -83,9 +81,9 @@
 
             // Simulated user validation (Replace with backend authentication)
             const validUsers = [
-                 { email: "admin@cca.edu.ph", password: "admin123", role: "admin" },
-                 { email: "student@cca.edu.ph", password: "student123", role: "student" },
-                 { email: "teacher@cca.edu.ph", password: "teacher123", role: "teacher" }
+                 { email: "admin@cca.edu.ph", password: "admin123", role: "Admin" },
+                 { email: "student@cca.edu.ph", password: "student123", role: "Student" },
+                 { email: "teacher@cca.edu.ph", password: "teacher123", role: "Teacher" }
             ];
 
             const userExists = validUsers.find(user => user.email === emailInput && user.password === passwordInput);
