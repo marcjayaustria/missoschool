@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 header("Location: HOME_STUDENTS.HTML"); // Redirect to student home page
                 exit;
             default:
-                header("Location: index.php"); // Default redirect if role is unknown
+                header("Location: index.html"); // Default redirect if role is unknown
                 exit;
         }
     } else {
